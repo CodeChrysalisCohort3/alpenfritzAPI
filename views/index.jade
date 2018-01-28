@@ -1,5 +1,28 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1= 'CRUD API Solo Project by alpenfritz'
+  h2= 'Documentation'
+  h3='1. Setup'
+  ul
+    li You can download the project from:
+      a(href="https://github.com/CodeChrysalisCohort3/alpenfritzAPI.git") https://github.com/CodeChrysalisCohort3/alpenfritzAPI.git
+    li Run <b>yarn install</b> to install node packages for the project
+    li Create a database in postgresql by running <b>createdb alpenfritzAPI</b> in the terminal
+    li Run <b>knex migrate:latest</b> in the terminal to create the table 'tvshow'
+    li Run <b>knex seed:run</b> to populate the table with some data
+    li You can use 
+      a(href="https://www.getpostman.com/") Postman
+      Postman  to carry out your Http requests
+  h3="2. Server"
+  ul
+    li Run <b>yarn start</b> to start a local server
+    li Run <b>yarn nodemon</b> to start nodemon
+    li Run <b>yarn test</b> to perform tests using mocha, chai, and supertest
+  h3="3. CRUD API"
+  ul
+    li <b>GET api/v1/tvshows</b>
+    li <b>GET api/v1/tvshows/:id</b>
+    li <b>POST api/v1/tvshows</b>
+    li <b>PUT api/v1/tvshows/:id</b>
+    li <b>DELETE api/v1/tvshows/:id</b>
