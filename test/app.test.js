@@ -78,4 +78,20 @@ describe('CRUD API', () => {
       });
   });
 
+  // DELETE an entry
+  it('should delete a record (DELETE method)', (done) => {
+    request(app)
+      .delete('/api/v1/tvshows/10') // DELETE
+      .set('Accept', 'applicaton/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.deep.equal({
+          deleted: true
+        });
+        done();
+      });
+  });
+
 });
