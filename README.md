@@ -16,6 +16,10 @@
 - Run `yarn nodemon` to start nodemon
 - Run `yarn test` to perform tests using mocha, chai, and supertest
 
+## Heroku
+
+- The project is also running on heroku: https://crud-tvshows-api.herokuapp.com/
+
 ## GET api/v1/tvshows
 
 Get all records
