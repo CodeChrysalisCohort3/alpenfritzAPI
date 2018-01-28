@@ -62,4 +62,20 @@ describe('CRUD API', () => {
       });
   });
 
+  // PUT an entry (Update an entry)
+  it('should update a record (PUT method)', (done) => {
+    fixtures.tvshow.rating = 5;
+    request(app)
+      .put('/api/v1/tvshows/10') // PUT: change tvshow with id=10
+      .send(fixtures.tvshow)
+      .set('Accept', 'applicaton/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.deep.equal(fixtures.tvshow);
+        done();
+      });
+  });
+
 });

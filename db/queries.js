@@ -10,5 +10,8 @@ module.exports = {
   },
   create(tvshow) {
     return knex('tvshow').insert(tvshow, '*'); // insert query, '*' returns the entry
+  },
+  update(id, tvshow) {
+    return knex('tvshow').where('id', id).update(tvshow, '*'); // update an entry,  '*' returns the entry
   }
 }

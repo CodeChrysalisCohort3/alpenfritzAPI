@@ -49,4 +49,16 @@ router.post('/', (req, res, next) => {
   }
 });
 
+// PUT a record (Update a record)
+router.put('/:id', isValidId, (req, res, next) => {
+  if (validEntry(req.body)) {
+    // update the entry
+    queries.update(req.params.id, req.body).then(tvshows => { // tvshows is an array
+      res.json(tvshows[0]);
+    });
+  } else {
+    next(new Error('Invalid entry'));
+  }
+});
+
 module.exports = router;
