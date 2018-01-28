@@ -32,4 +32,18 @@ describe('CRUD API', () => {
       });
   });
 
+  // GET one entry
+  it('should show one record (GET method)', (done) => {
+    request(app)
+      .get('/api/v1/tvshows/5') // GET
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.deep.equal(fixtures.tvshows[4]);
+        done();
+      });
+  });
+
 });
