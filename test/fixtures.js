@@ -64,6 +64,14 @@ const tvshows = [
   }
 ];
 
+const tvshow = {
+  "title": "House of Cards",
+  "description": "Drama",
+  "rating": 8.9,
+  "url": "http://www.imdb.com/title/tt1856010/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=3499204302&pf_rd_r=1D85Y5C0AWD7AFSNGQCM&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=toptv&ref_=chttvtp_tt_38"
+};
+
 module.exports = {
-  tvshows
+  tvshows,
+  tvshow
 }

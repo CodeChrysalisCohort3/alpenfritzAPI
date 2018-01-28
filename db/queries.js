@@ -8,4 +8,7 @@ module.exports = {
   getOne(id) {
     return knex('tvshow').where('id', id).first(); // return one entry
   },
+  create(tvshow) {
+    return knex('tvshow').insert(tvshow, '*'); // insert query, '*' returns the entry
+  }
 }

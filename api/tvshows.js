@@ -9,6 +9,14 @@ function isValidId(req, res, next) {
   next(new Error('Invalid Id'));
 }
 
+function validEntry(tvshow) {
+  const hasTitle = typeof tvshow.title == 'string' && tvshow.title.trim() != '';
+  const hasUrl = typeof tvshow.url == 'string' && tvshow.url.trim() != '';
+  const hasDescription = typeof tvshow.description == 'string' && tvshow.description.trim() != '';
+  const hasRating = !isNaN(tvshow.rating);
+  return hasTitle && hasUrl && hasDescription && hasRating;
+}
+
 // GET all records
 router.get('/', (req, res) => {
   queries.getAll().then(tvshows => { // tvshows is the result from the DB query
@@ -27,6 +35,18 @@ router.get('/:id', isValidId, (req, res, next) => {
       // next(new Error('Not found'));
     }
   });
+});
+
+// POST a record
+router.post('/', (req, res, next) => {
+  if (validEntry(req.body)) {
+    // insert into DB
+    queries.create(req.body).then(tvshows => { // tvshows is an array
+      res.json(tvshows[0]);
+    });
+  } else {
+    next(new Error('Invalid entry'));
+  }
 });
 
 module.exports = router;

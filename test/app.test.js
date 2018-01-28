@@ -46,4 +46,20 @@ describe('CRUD API', () => {
       });
   });
 
+  // POST an entry
+  it('should create a record (POST method)', (done) => {
+    request(app)
+      .post('/api/v1/tvshows') // POST
+      .send(fixtures.tvshow)
+      .set('Accept', 'applicaton/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.be.a('object');
+        fixtures.tvshow.id = response.body.id;
+        expect(response.body).to.deep.equal(fixtures.tvshow);
+        done();
+      });
+  });
+
 });
